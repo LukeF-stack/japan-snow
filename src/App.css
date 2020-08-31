@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  width: 100vw;
+  height: 60px;
+  justify-content: space-around;
+  display: flexbox;
+  background-color: rgb(37, 37, 37);
+  top: 0;
+}
+
+nav ul {
+  line-height: 60px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-links li {
+  color: white;
+  transition: all ease 0.3s;
+}
+
+.nav-links li:hover {
+  transform: scale(1.1);
+}
+
+ul {
+  list-style: none;
+}

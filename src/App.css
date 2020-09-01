@@ -12,6 +12,7 @@ nav {
   display: flexbox;
   background-color: rgb(37, 37, 37);
   top: 0;
+  z-index: 10;
 }
 
 nav ul {
@@ -52,6 +53,12 @@ ul {
   grid-row: 2;
 }
 
+.homePage-map {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+}
 .homePage-map ul {
-  display: flex;
+  z-index: 1;
 }

@@ -8,6 +8,7 @@ class homePage extends React.Component {
     return (
       <div className="home">
         <HomePageHero />
+        <h1>MAP</h1>
         <Map />
       </div>
     );

@@ -1,5 +1,5 @@
 {
-  "name": "japan-snow-staging",
+  "name": "japan-snow",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -8,6 +8,7 @@
     "codesandbox": "2.1.16",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "react-helmet": "6.1.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.0.1"
   },
@@ -20,5 +21,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

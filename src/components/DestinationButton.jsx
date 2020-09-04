@@ -9,7 +9,7 @@ class DestinationButton extends React.Component {
         this.props.destinationId
     )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data.description));
   };
   render() {
     return <button onClick={this.displayInfo}>{this.props.destination}</button>;

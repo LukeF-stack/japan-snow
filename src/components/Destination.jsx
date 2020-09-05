@@ -11,13 +11,17 @@ class DestinationParent extends React.Component {
       "https://omt3u.sse.codesandbox.io/api/destinations/" + value
     );
     const data = await response.json();
-    this.setState({ destinationTitle: data.title });
-    console.log(data.title);
+    this.setState({
+      destinationTitle: data.title,
+      destinationDescription: data.description
+    });
+    //console.log(data.title);
   };
   render() {
     return (
       <div>
         <h1>{this.state.destinationTitle}</h1>
+        <p>{this.state.destinationDescription}</p>
         <DestinationChild
           destination="Hakuba Valley"
           destinationId="5f4f0c4d6dc6a63a00dfd95a"

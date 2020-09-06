@@ -62,3 +62,7 @@ ul {
 .homePage-map ul {
   z-index: 1;
 }
+
+.page-title {
+  margin-top: 20vh;
+}

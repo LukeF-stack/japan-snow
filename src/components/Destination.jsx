@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import DestinationChild from "./DestinationChild.jsx";
+import { Link } from "react-router-dom";
 
 class DestinationParent extends React.Component {
   state = {
@@ -13,7 +14,9 @@ class DestinationParent extends React.Component {
     const data = await response.json();
     this.setState({
       destinationTitle: data.title,
-      destinationDescription: data.description
+      destinationDescription: data.description,
+      destinationId: data._id,
+      buttonTitle: "View " + data.title
     });
     //console.log(data.title);
   };
@@ -22,6 +25,9 @@ class DestinationParent extends React.Component {
       <div>
         <h1>{this.state.destinationTitle}</h1>
         <p>{this.state.destinationDescription}</p>
+        <Link to={`/destinations/${this.state.destinationId}`}>
+          <h5>{this.state.buttonTitle}</h5>
+        </Link>
         <DestinationChild
           destination="Hakuba Valley"
           destinationId="5f4f0c4d6dc6a63a00dfd95a"

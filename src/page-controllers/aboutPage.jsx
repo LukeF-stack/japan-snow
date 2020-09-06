@@ -3,7 +3,7 @@ import "../App.css";
 
 class aboutPage extends React.Component {
   render() {
-    return <h1>About</h1>;
+    return <h1 className="page-title">About</h1>;
   }
 }
 

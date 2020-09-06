@@ -3,7 +3,7 @@ import "../App.css";
 
 class contactPage extends React.Component {
   render() {
-    return <h1>Contact</h1>;
+    return <h1 className="page-title">Contact</h1>;
   }
 }
 

@@ -16,7 +16,8 @@ class DestinationParent extends React.Component {
       destinationTitle: data.title,
       destinationDescription: data.description,
       destinationId: data._id,
-      buttonTitle: "View " + data.title
+      buttonTitle: "View " + data.title,
+      island: data.island
     });
     //console.log(data.title);
   };
@@ -28,6 +29,9 @@ class DestinationParent extends React.Component {
         <Link to={`/destinations/${this.state.destinationId}`}>
           <h5>{this.state.buttonTitle}</h5>
         </Link>
+        <h6>
+          <strong>{this.state.island}</strong>
+        </h6>
         <DestinationChild
           destination="Hakuba Valley"
           destinationId="5f4f0c4d6dc6a63a00dfd95a"

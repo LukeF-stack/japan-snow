@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
+import NavTabs from "../components/DestinationNavTab.jsx";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import DestinationInfo from "../components/DestinationInfo";
 
 function DestinationPage({ match }) {
   useEffect(() => {
@@ -20,7 +23,15 @@ function DestinationPage({ match }) {
   return (
     <div>
       <h1 className="page-title">{destination.title}</h1>
-      <p>{destination.description}</p>
+      <NavTabs match={match} />
+      <Router>
+        <Switch>
+          <DestinationInfo
+            description={destination.description}
+            island={destination.island}
+          />
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import "../App.css";
 import NavTabs from "../components/DestinationNavTab.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DestinationInfo from "../components/DestinationInfo";
+import DestinationResorts from "../components/DestinationResorts";
 
 function DestinationPage({ match }) {
   useEffect(() => {
@@ -35,6 +36,9 @@ function DestinationPage({ match }) {
               description={destination.description}
               island={destination.island}
             />
+          </Route>
+          <Route path="/destinations/:id/resorts">
+            <DestinationResorts />
           </Route>
         </Switch>
       </div>

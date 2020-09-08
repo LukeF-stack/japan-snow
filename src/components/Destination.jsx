@@ -8,17 +8,22 @@ class DestinationParent extends React.Component {
     destinationTitle: "Select a destination"
   };
   getInfo = async (value) => {
-    const response = await fetch(
-      "https://5sx1m.sse.codesandbox.io/api/destinations/" + value
-    );
-    const data = await response.json();
-    this.setState({
-      destinationTitle: data.title,
-      destinationDescription: data.description,
-      destinationId: data._id,
-      buttonTitle: "View " + data.title,
-      island: data.island
-    });
+    try {
+      const response = await fetch(
+        "https://5sx1m.sse.codesandbox.io/api/destinations/" + value
+      );
+      const data = await response.json();
+      this.setState({
+        destinationTitle: data.title,
+        destinationDescription: data.description,
+        destinationId: data._id,
+        buttonTitle: "View " + data.title,
+        island: data.island
+      });
+    } catch (e) {
+      console.log(e);
+    }
+
     //console.log(data.title);
   };
   render() {

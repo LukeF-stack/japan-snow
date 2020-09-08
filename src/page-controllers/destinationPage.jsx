@@ -13,12 +13,16 @@ function DestinationPage({ match }) {
   const [destination, setDestination] = useState({});
 
   const generatePageContent = async () => {
-    const response = await fetch(
-      `https://omt3u.sse.codesandbox.io/api/destinations/${match.params.id}`
-    );
-    const destination = await response.json();
-    setDestination(destination);
-    console.log(destination);
+    try {
+      const response = await fetch(
+        `https://5sx1m.sse.codesandbox.io/api/destinations/${match.params.id}`
+      );
+      const destination = await response.json();
+      setDestination(destination);
+      console.log(destination);
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <Router>

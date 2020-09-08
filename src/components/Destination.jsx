@@ -47,6 +47,16 @@ class DestinationParent extends React.Component {
           destinationId="5f51ee44a99a94584080dc10"
           displayInfo={this.getInfo}
         />
+        <DestinationChild
+          destination="Shiga Kogen"
+          destinationId="5f576091a066892294ead2de"
+          displayInfo={this.getInfo}
+        />
+        <DestinationChild
+          destination="Rusutsu"
+          destinationId="5f5761d6a066892294ead2df"
+          displayInfo={this.getInfo}
+        />
       </div>
     );
   }

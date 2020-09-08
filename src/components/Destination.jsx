@@ -9,7 +9,7 @@ class DestinationParent extends React.Component {
   };
   getInfo = async (value) => {
     const response = await fetch(
-      "https://omt3u.sse.codesandbox.io/api/destinations/" + value
+      "https://5sx1m.sse.codesandbox.io/api/destinations/" + value
     );
     const data = await response.json();
     this.setState({
@@ -26,7 +26,7 @@ class DestinationParent extends React.Component {
       <div>
         <h1>{this.state.destinationTitle}</h1>
         <p>{this.state.destinationDescription}</p>
-        <Link to={`/destinations/${this.state.destinationId}`}>
+        <Link to={`/destinations/${this.state.destinationId}/info`}>
           <h5>{this.state.buttonTitle}</h5>
         </Link>
         <h6>

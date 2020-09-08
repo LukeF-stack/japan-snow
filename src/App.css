@@ -71,11 +71,12 @@ ul {
   display: flex;
   justify-content: space-around;
   padding: 0;
-  margin: 30px 0;
+  width: 70%;
+  margin: 30px auto;
 }
 
 .nav-tabs li {
-  color: black;
+  color: rgb(110, 0, 0);
   transition: all ease 0.3s;
 }
 

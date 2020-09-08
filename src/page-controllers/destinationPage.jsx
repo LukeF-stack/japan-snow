@@ -21,18 +21,20 @@ function DestinationPage({ match }) {
     console.log(destination);
   };
   return (
-    <div>
-      <h1 className="page-title">{destination.title}</h1>
-      <NavTabs match={match} />
-      <Router>
+    <Router>
+      <div>
+        <h1 className="page-title">{destination.title}</h1>
+        <NavTabs match={match} />
         <Switch>
-          <DestinationInfo
-            description={destination.description}
-            island={destination.island}
-          />
+          <Route path="/destinations/:id/info">
+            <DestinationInfo
+              description={destination.description}
+              island={destination.island}
+            />
+          </Route>
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

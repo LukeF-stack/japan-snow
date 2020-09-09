@@ -41,7 +41,7 @@ function DestinationPage({ match }) {
             />
           </Route>
           <Route path="/destinations/:id/resorts">
-            <DestinationResorts />
+            <DestinationResorts match={match} />
           </Route>
           <Route path="/destinations/:id/photos">
             <DestinationPhotos />

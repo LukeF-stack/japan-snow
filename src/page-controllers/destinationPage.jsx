@@ -4,6 +4,9 @@ import NavTabs from "../components/DestinationNavTab.jsx";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DestinationInfo from "../components/DestinationInfo";
 import DestinationResorts from "../components/DestinationResorts";
+import DestinationPhotos from "../components/DestinationPhotos";
+import DestinationReviews from "../components/DestinationReviews";
+import DestinationFlights from "../components/DestinationFlights";
 
 function DestinationPage({ match }) {
   useEffect(() => {
@@ -39,6 +42,15 @@ function DestinationPage({ match }) {
           </Route>
           <Route path="/destinations/:id/resorts">
             <DestinationResorts />
+          </Route>
+          <Route path="/destinations/:id/photos">
+            <DestinationPhotos />
+          </Route>
+          <Route path="/destinations/:id/reviews">
+            <DestinationReviews />
+          </Route>
+          <Route path="/destinations/:id/flights">
+            <DestinationFlights />
           </Route>
         </Switch>
       </div>

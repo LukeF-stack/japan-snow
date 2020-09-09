@@ -28,7 +28,7 @@ class DestinationParent extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="destination-bio">
         <h1>{this.state.destinationTitle}</h1>
         <p>{this.state.destinationDescription}</p>
         <Link to={`/destinations/${this.state.destinationId}/info`}>

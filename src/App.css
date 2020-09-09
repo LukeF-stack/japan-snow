@@ -91,3 +91,9 @@ ul {
   max-width: 800px;
   margin: auto;
 }
+
+.destination-bio {
+  width: 70%;
+  margin: auto;
+  max-width: 600px;
+}

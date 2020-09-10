@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../App.css";
 
 class DestinationResorts extends React.Component {
+  list: {};
+  componentDidMount() {
+    this.getResorts();
+  }
   getResorts = async (props) => {
     try {
       const url = new URL("https://5sx1m.sse.codesandbox.io/api/resorts");
@@ -20,24 +24,10 @@ class DestinationResorts extends React.Component {
     return (
       <div className="destination-resorts">
         <h1 className="page-title">Resorts</h1>
-        <ResortsChild displayResorts={this.getResorts} />
+        <ul>{this.list}</ul>
       </div>
     );
   }
-}
-
-function ResortsChild(props) {
-  const { displayResorts } = props;
-  useEffect(() => {
-    displayResorts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <div>
-      <h6>results</h6>
-    </div>
-  );
 }
 
 export default DestinationResorts;

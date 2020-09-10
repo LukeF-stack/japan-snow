@@ -17,7 +17,14 @@ class DestinationResorts extends React.Component {
       this.setState({ results: resorts });
       //console.log(this.state.results);
       this.state.results.forEach((resort) => {
-        this.list.push(<li key={resort._id}>{resort.title}</li>);
+        this.list.push(
+          <li key={resort._id}>
+            <div className="resort-result">
+              <h5>{resort.title}</h5>
+              <img src={resort.cover_img} alt={resort.title}></img>
+            </div>
+          </li>
+        );
         this.setState({ list: this.list });
       });
     } catch (e) {

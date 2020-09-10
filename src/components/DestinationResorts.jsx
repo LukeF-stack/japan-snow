@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 
 class DestinationResorts extends React.Component {
-  list: {};
+  list = [];
   componentDidMount() {
     this.getResorts();
   }
@@ -15,7 +15,11 @@ class DestinationResorts extends React.Component {
       const resorts = await response.json();
       //console.log(resorts);
       this.setState({ results: resorts });
-      console.log(this.state.results);
+      //console.log(this.state.results);
+      this.state.results.forEach((resort) => {
+        this.list.push(<li key={resort._id}>{resort.title}</li>);
+        this.setState({ list: this.list });
+      });
     } catch (e) {
       console.log(e);
     }

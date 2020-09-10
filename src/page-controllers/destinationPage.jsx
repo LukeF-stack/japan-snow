@@ -23,7 +23,7 @@ function DestinationPage({ match }) {
       );
       const destination = await response.json();
       setDestination(destination);
-      console.log(destination);
+      //console.log(destination);
     } catch (e) {
       console.log(e);
     }

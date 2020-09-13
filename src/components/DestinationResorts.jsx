@@ -20,9 +20,7 @@ class DestinationResorts extends React.Component {
       this.state.results.forEach((resort) => {
         this.list.push(
           <li key={resort._id}>
-            <Link
-              to={`/destinations/${this.props.match.params.id}/resorts/${resort._id}`}
-            >
+            <Link to={`/resorts/${resort._id}`}>
               <div className="resort-result">
                 <h5>{resort.title}</h5>
                 <img src={resort.cover_img} alt={resort.title}></img>

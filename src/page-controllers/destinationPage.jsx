@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import NavTabs from "../components/DestinationNavTab.jsx";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import DestinationInfo from "../components/DestinationInfo";
 import DestinationResorts from "../components/DestinationResorts";
 import DestinationPhotos from "../components/DestinationPhotos";
@@ -29,32 +29,30 @@ function DestinationPage({ match }) {
     }
   };
   return (
-    <Router>
-      <div>
-        <h1 className="page-title">{destination.title}</h1>
-        <NavTabs match={match} />
-        <Switch>
-          <Route path="/destinations/:id/info">
-            <DestinationInfo
-              description={destination.description}
-              island={destination.island}
-            />
-          </Route>
-          <Route path="/destinations/:id/resorts">
-            <DestinationResorts match={match} />
-          </Route>
-          <Route path="/destinations/:id/photos">
-            <DestinationPhotos />
-          </Route>
-          <Route path="/destinations/:id/reviews">
-            <DestinationReviews />
-          </Route>
-          <Route path="/destinations/:id/flights">
-            <DestinationFlights />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <div>
+      <h1 className="page-title">{destination.title}</h1>
+      <NavTabs match={match} />
+      <Switch>
+        <Route path="/destinations/:id/info">
+          <DestinationInfo
+            description={destination.description}
+            island={destination.island}
+          />
+        </Route>
+        <Route exact path="/destinations/:id/resorts">
+          <DestinationResorts match={match} />
+        </Route>
+        <Route exact path="/destinations/:id/photos">
+          <DestinationPhotos />
+        </Route>
+        <Route exact path="/destinations/:id/reviews">
+          <DestinationReviews />
+        </Route>
+        <Route exact path="/destinations/:id/flights">
+          <DestinationFlights />
+        </Route>
+      </Switch>
+    </div>
   );
 }
 

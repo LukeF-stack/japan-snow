@@ -21,7 +21,7 @@ function App() {
           <Route path="/about" exact component={AboutPage} />
           <Route path="/contact" exact component={ContactPage} />
           <Route path="/destinations/:id" component={DestinationPage} />
-          <Route path="/resorts/:id" exact component={ResortPage} />
+          <Route path="/resorts/:id" component={ResortPage} />
         </Switch>
       </div>
     </Router>

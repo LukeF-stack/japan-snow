@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import NavTabs from "../components/DestinationNavTab.jsx";
+import DestinationNavTabs from "../components/DestinationNavTab.jsx";
 import { Switch, Route } from "react-router-dom";
 import DestinationInfo from "../components/DestinationInfo";
 import DestinationResorts from "../components/DestinationResorts";
@@ -31,7 +31,7 @@ function DestinationPage({ match }) {
   return (
     <div>
       <h1 className="page-title">{destination.title}</h1>
-      <NavTabs match={match} />
+      <DestinationNavTabs match={match} />
       <Switch>
         <Route path="/destinations/:id/info">
           <DestinationInfo

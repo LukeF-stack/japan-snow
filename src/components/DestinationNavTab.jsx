@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 
-class NavTabs extends React.Component {
+class DestinationNavTabs extends React.Component {
   infoLink = `/destinations/${this.props.match.params.id}/info`;
   resortsLink = `/destinations/${this.props.match.params.id}/resorts`;
   photosLink = `/destinations/${this.props.match.params.id}/photos`;
@@ -33,4 +33,4 @@ class NavTabs extends React.Component {
   }
 }
 
-export default NavTabs;
+export default DestinationNavTabs;

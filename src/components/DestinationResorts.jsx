@@ -37,7 +37,7 @@ class DestinationResorts extends React.Component {
   render() {
     return (
       <div className="destination-resorts">
-        <h1 className="page-title">Resorts</h1>
+        <h1 className="section-title">Resorts</h1>
         <ul>{this.list}</ul>
       </div>
     );

@@ -68,6 +68,11 @@ ul {
   margin-top: 20vh;
 }
 
+.section-title {
+  text-align: center;
+  margin-top: 10vh;
+  color: rgb(165, 165, 165);
+}
 .nav-tabs {
   display: flex;
   justify-content: space-around;

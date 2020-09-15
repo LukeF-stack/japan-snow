@@ -21,11 +21,17 @@ class SignInPage extends React.Component {
         settings
       );
       const data = await response.json();
-      //console.log(data.user);
-      User.fullName = data.user.fullName;
-      User.email = data.user.email;
-      //console.log(User.email);
-      localStorage.setItem("token", data.token);
+      //console.log(data);
+      if (!data) {
+        console.log("problem signing in");
+      } else {
+        User.storeUser(data);
+        //User.fullName = data.user.fullName;
+        //User.email = data.user.email;
+        //console.log(User.email);
+        localStorage.setItem("token", data.token);
+        //console.log(User);
+      }
     } catch (e) {
       console.log(e);
     }

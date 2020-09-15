@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import "../App.css";
 import Nav from "./Nav";
 import HomePage from "../page-controllers/homePage";
@@ -11,15 +11,20 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import SignUpPage from "../page-controllers/signupPage";
 import SignInPage from "../page-controllers/signinPage";
+import AccountPage from "../page-controllers/accountPage";
+import { User } from "./User";
 //import DestinationInfo from "./DestinationInfo";
 
 function App() {
+  const [user, setUser] = useState(User.props);
+
+  const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
   return (
     <Router>
       <div className="App">
-        <Nav />
-        <Switch>
-          <UserContext.Provider value="hello from context">
+        <UserContext.Provider value={providerUser}>
+          <Nav />
+          <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/destinations" exact component={DestinationsPage} />
             <Route path="/about" exact component={AboutPage} />
@@ -28,8 +33,9 @@ function App() {
             <Route path="/resorts/:id" component={ResortPage} />
             <Route path="/signup" exact component={SignUpPage} />
             <Route path="/signin" exact component={SignInPage} />
-          </UserContext.Provider>
-        </Switch>
+            <Route path="/account" exact component={AccountPage} />
+          </Switch>
+        </UserContext.Provider>
       </div>
     </Router>
   );

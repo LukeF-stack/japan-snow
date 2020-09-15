@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import SignInForm from "../components/SignInForm";
+import { User } from "../components/User.js";
 
 class SignInPage extends React.Component {
   onSignIn = async (fields) => {
@@ -20,7 +21,10 @@ class SignInPage extends React.Component {
         settings
       );
       const data = await response.json();
-      //console.log(data);
+      //console.log(data.user);
+      User.fullName = data.user.fullName;
+      User.email = data.user.email;
+      //console.log(User.email);
       localStorage.setItem("token", data.token);
     } catch (e) {
       console.log(e);

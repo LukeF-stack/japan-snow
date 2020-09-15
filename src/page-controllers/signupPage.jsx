@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import Form from "../components/Form";
+import SignUpForm from "../components/SignUpForm";
 
 class SignUpPage extends React.Component {
   onSignUp = async (fields) => {
@@ -29,7 +29,7 @@ class SignUpPage extends React.Component {
   render() {
     return (
       <div>
-        <Form onSignUp={(fields) => this.onSignUp(fields)} />
+        <SignUpForm onSignUp={(fields) => this.onSignUp(fields)} />
       </div>
     );
   }

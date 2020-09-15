@@ -22,6 +22,9 @@ class Nav extends React.Component {
           <Link to="/signup">
             <li>Sign Up</li>
           </Link>
+          <Link to="/signin">
+            <li>Sign In</li>
+          </Link>
         </ul>
       </nav>
     );

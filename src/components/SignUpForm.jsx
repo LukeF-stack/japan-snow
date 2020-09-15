@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 
-class Form extends React.Component {
+class SignUpForm extends React.Component {
   state = {
     fullName: "",
     email: "",
@@ -34,22 +34,22 @@ class Form extends React.Component {
           />
           <input
             name="email"
-            value={this.state.fullname}
+            value={this.state.email}
             placeholder="Email"
             onChange={(e) => this.change(e)}
           />
           <input
             name="password"
             type="password"
-            value={this.state.fullname}
+            value={this.state.password}
             placeholder="Password"
             onChange={(e) => this.change(e)}
           />
-          <button onClick={(e) => this.onSubmit(e)}>Submit</button>
+          <button onClick={(e) => this.onSubmit(e)}>Sign Up</button>
         </form>
       </div>
     );
   }
 }
 
-export default Form;
+export default SignUpForm;

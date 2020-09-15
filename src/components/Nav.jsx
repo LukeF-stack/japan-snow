@@ -1,17 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
-import SetUserContext from "./User";
+//import SetUserContext from "./User";
 
 function Nav() {
   const { user } = useContext(UserContext);
-  useEffect(() => {
-    console.log(user);
-  });
   return (
     <nav>
-      <SetUserContext />
       <ul className="nav-links">
         <Link to="/">
           <li>Home</li>

@@ -12,6 +12,7 @@ import { UserContext } from "./UserContext";
 import SignUpPage from "../page-controllers/signupPage";
 import SignInPage from "../page-controllers/signinPage";
 import AccountPage from "../page-controllers/accountPage";
+import SetUserContext from "./User";
 import { User } from "./User";
 //import DestinationInfo from "./DestinationInfo";
 
@@ -19,10 +20,12 @@ function App() {
   const [user, setUser] = useState(User.props);
 
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
+
   return (
     <Router>
       <div className="App">
         <UserContext.Provider value={providerUser}>
+          <SetUserContext />
           <Nav />
           <Switch>
             <Route path="/" exact component={HomePage} />

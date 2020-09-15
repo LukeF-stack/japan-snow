@@ -13,16 +13,16 @@ const User = {
     User.props.fullName = data.user.fullName;
     User.props.email = data.user.email;
     User.props.authenticated = true;
-    console.log(User);
+    //console.log(User.props);
   }
 };
 
 function SetUserContext() {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   useEffect(() => {
     setUser(User.props);
-    //console.log(user);
-  });
+    console.log(user);
+  }, [user, setUser]);
   return null;
 }
 

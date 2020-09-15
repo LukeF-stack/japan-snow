@@ -15,7 +15,11 @@ class Form extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.onSignUp(this.state);
-    console.log(this.state);
+    this.setState({
+      fullName: "",
+      email: "",
+      password: ""
+    });
   };
   render() {
     return (

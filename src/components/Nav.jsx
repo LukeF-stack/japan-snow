@@ -19,6 +19,9 @@ class Nav extends React.Component {
           <Link to="/contact">
             <li>Contact</li>
           </Link>
+          <Link to="/signup">
+            <li>Sign Up</li>
+          </Link>
         </ul>
       </nav>
     );

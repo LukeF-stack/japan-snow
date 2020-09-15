@@ -9,6 +9,7 @@ import ContactPage from "../page-controllers/contactPage";
 import ResortPage from "../page-controllers/resortPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import SignUpPage from "../page-controllers/signupPage";
 //import DestinationInfo from "./DestinationInfo";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/contact" exact component={ContactPage} />
             <Route path="/destinations/:id" component={DestinationPage} />
             <Route path="/resorts/:id" component={ResortPage} />
+            <Route path="/signup" exact component={SignUpPage} />
           </UserContext.Provider>
         </Switch>
       </div>

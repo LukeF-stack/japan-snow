@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import SignInForm from "../components/SignInForm";
 import { User } from "../components/User.js";
+import UserData from "../components/UserData";
 
 class SignInPage extends React.Component {
   onSignIn = async (fields) => {
@@ -30,10 +31,12 @@ class SignInPage extends React.Component {
         //User.email = data.user.email;
         //console.log(User.email);
         localStorage.setItem("token", data.token);
-        //console.log(User);
+        //SetUserContext(data.user);
+        //console.log(User.props);
+        window.location.pathname = "/";
       }
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
 
@@ -41,6 +44,7 @@ class SignInPage extends React.Component {
     return (
       <div>
         <SignInForm onSignIn={(fields) => this.onSignIn(fields)} />
+        <UserData />
       </div>
     );
   }

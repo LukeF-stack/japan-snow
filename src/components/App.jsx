@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import "../App.css";
 import Nav from "./Nav";
 import HomePage from "../page-controllers/homePage";
@@ -17,16 +17,22 @@ import { User } from "./User";
 //import DestinationInfo from "./DestinationInfo";
 
 function App() {
+  const [hash, setHash] = useState({});
+  useEffect(() => {
+    setHash(window.location);
+  }, []);
+  useEffect(() => {
+    User.validateUser();
+  }, [hash, setHash]);
   const [user, setUser] = useState(User.props);
 
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
-
   return (
     <Router>
       <div className="App">
         <UserContext.Provider value={providerUser}>
-          <SetUserContext />
           <Nav />
+          <SetUserContext />
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/destinations" exact component={DestinationsPage} />

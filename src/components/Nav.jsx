@@ -5,7 +5,7 @@ import { UserContext } from "./UserContext";
 //import SetUserContext from "./User";
 
 function Nav() {
-  const { user } = useContext(UserContext);
+  //const { user } = useContext(UserContext);
   return (
     <nav>
       <ul className="nav-links">
@@ -27,11 +27,10 @@ function Nav() {
         <Link to="/signin">
           <li>Sign In</li>
         </Link>
-        {user.authenticated ? (
-          <Link to="/account">
-            <li>Account</li>
-          </Link>
-        ) : null}
+
+        <Link to="/account">
+          <li>Account</li>
+        </Link>
       </ul>
     </nav>
   );

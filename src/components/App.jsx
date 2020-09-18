@@ -12,27 +12,25 @@ import { UserContext } from "./UserContext";
 import SignUpPage from "../page-controllers/signupPage";
 import SignInPage from "../page-controllers/signinPage";
 import AccountPage from "../page-controllers/accountPage";
-import SetUserContext from "./User";
+//import SetUserContext from "./User";
 import { User } from "./User";
 //import DestinationInfo from "./DestinationInfo";
 
 function App() {
-  const [hash, setHash] = useState({});
-  useEffect(() => {
-    setHash(window.location);
-  }, []);
-  useEffect(() => {
-    User.validateUser();
-  }, [hash, setHash]);
   const [user, setUser] = useState(User.props);
 
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
+
+  useEffect(() => {
+    setUser(user);
+    console.log("mounting app");
+  }, [user, setUser]);
+
   return (
     <Router>
       <div className="App">
         <UserContext.Provider value={providerUser}>
           <Nav />
-          <SetUserContext />
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/destinations" exact component={DestinationsPage} />
@@ -45,6 +43,7 @@ function App() {
             <Route path="/account" exact component={AccountPage} />
           </Switch>
         </UserContext.Provider>
+        <h1>{JSON.stringify(user)}</h1>
       </div>
     </Router>
   );

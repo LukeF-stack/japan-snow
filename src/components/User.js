@@ -1,6 +1,6 @@
 import "../App.css";
-import { useContext, useEffect } from "react";
-import { UserContext } from "./UserContext";
+//import { useContext, useEffect } from "react";
+//import { UserContext } from "./UserContext";
 
 const User = {
   props: {
@@ -44,7 +44,7 @@ const User = {
     }
   }
 };
-
+/*
 function SetUserContext() {
   const { user, setUser } = useContext(UserContext);
   useEffect(() => {
@@ -52,7 +52,7 @@ function SetUserContext() {
     //console.log(user);
   }, [user, setUser]);
   return null;
-}
+}*/
 
-export default SetUserContext;
+//export default SetUserContext;
 export { User };

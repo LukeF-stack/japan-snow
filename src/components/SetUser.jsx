@@ -7,7 +7,7 @@ function SetUser(props) {
   const { user, setUser } = useContext(UserContext);
   useEffect(() => {
     setUser(userData);
-  }, [user, setUser, userData]);
+  }, [setUser, userData]);
   return (
     <div>
       <h4>{JSON.stringify(user)}</h4>

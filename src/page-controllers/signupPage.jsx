@@ -22,7 +22,7 @@ class SignUpPage extends React.Component {
       const data = await response.json();
       console.log(`${data.fullName} user created`);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
 

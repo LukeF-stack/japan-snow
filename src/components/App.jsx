@@ -15,6 +15,7 @@ import AccountPage from "../page-controllers/accountPage";
 //import SetUser from "./SetUser";
 //import SetUserContext from "./User";
 import { User } from "./User";
+//import { useHistory } from "react-router-dom";
 //import DestinationInfo from "./DestinationInfo";
 
 function App() {
@@ -23,7 +24,34 @@ function App() {
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   useEffect(() => {
-    //setUser(User.props);
+    if (localStorage.getItem("token")) {
+      fetch("https://5sx1m.sse.codesandbox.io/api/auth/validate", {
+        headers: { Authorization: `Bearer ${localStorage.token}` }
+      })
+        .then((res) => {
+          if (res.status !== 200) {
+            localStorage.removeItem("token");
+            setUser(User.props);
+            console.log("token not valid");
+          } else {
+            res.json().then((res) => {
+              console.log("User authorised");
+              const userData = {
+                fullName: res.user.fullName,
+                email: res.user.email,
+                authenticated: true
+              };
+              setUser(userData);
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    } else {
+      console.log("No local token, please sign in");
+      window.location.hash = "#signin";
+    }
   }, []);
 
   return (

@@ -14,17 +14,17 @@ import SignInPage from "../page-controllers/signinPage";
 import AccountPage from "../page-controllers/accountPage";
 //import SetUser from "./SetUser";
 //import SetUserContext from "./User";
-//import { User } from "./User";
+import { User } from "./User";
 //import DestinationInfo from "./DestinationInfo";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(User.props);
 
   const providerUser = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   useEffect(() => {
-    //console.log("user changing");
-  }, [user, setUser]);
+    //setUser(User.props);
+  }, []);
 
   return (
     <Router>

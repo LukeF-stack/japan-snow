@@ -28,8 +28,8 @@ class SignInPage extends React.Component {
         console.log("problem signing in");
       } else {
         this.userData = data.user;
-        this.setState(this.userData);
-        this.setUser.push(<SetUser key="1" userData={this.state} />);
+        this.User = this.userData;
+        this.setUser.push(<SetUser key="1" userData={this.User} />);
         this.setState(this.userData);
         localStorage.setItem("token", data.token);
       }

@@ -27,9 +27,11 @@ function Nav() {
         <Link to="/signin">
           <li>Sign In</li>
         </Link>
-        <Link to="/account">
-          <li>Account</li>
-        </Link>
+        {user.authenticated ? (
+          <Link to="/account">
+            <li>Account</li>
+          </Link>
+        ) : null}
       </ul>
     </nav>
   );

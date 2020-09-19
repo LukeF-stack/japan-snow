@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { Link, Switch, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class DestinationResorts extends React.Component {
   list = [];

@@ -5,7 +5,7 @@ import SignInForm from "../components/SignInForm";
 import SetUser from "../components/SetUser";
 
 class SignInPage extends React.Component {
-
+  setUser = [];
   onSignIn = async (fields) => {
     //console.log("signupPage got", fields);
 
@@ -27,18 +27,11 @@ class SignInPage extends React.Component {
       if (!data) {
         console.log("problem signing in");
       } else {
-        //User.storeUser(data);
-        //User.fullName = data.user.fullName;
-        //User.email = data.user.email;
-        //console.log(data.user);
         this.userData = data.user;
         this.setState(this.userData);
+        this.setUser.push(<SetUser key="1" userData={this.state} />);
+        this.setState(this.userData);
         localStorage.setItem("token", data.token);
-        //console.log("user is ", this.state.user);
-        //this.context.setUser({ user: this.state.user });
-        //SetUserContext(data.user);
-        //console.log(User.props);
-        //window.location.pathname = "/";
       }
     } catch (e) {
       console.log(e.message);
@@ -46,11 +39,11 @@ class SignInPage extends React.Component {
   };
 
   render() {
-    const user = this.state;
+    //const user = this.state;
     return (
       <div>
         <SignInForm onSignIn={(fields) => this.onSignIn(fields)} />
-        <SetUser userData={user} />
+        <div>{this.setUser}</div>
       </div>
     );
   }

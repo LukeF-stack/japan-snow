@@ -21,12 +21,16 @@ function Nav() {
         <Link to="/contact">
           <li>Contact</li>
         </Link>
-        <Link to="/signup">
-          <li>Sign Up</li>
-        </Link>
-        <Link to="/signin">
-          <li>Sign In</li>
-        </Link>
+        {!user.authenticated ? (
+          <Link to="/signup">
+            <li>Sign Up</li>
+          </Link>
+        ) : null}
+        {!user.authenticated ? (
+          <Link to="/signin">
+            <li>Sign In</li>
+          </Link>
+        ) : null}
         {user.authenticated ? (
           <Link to="/account">
             <li>Account</li>

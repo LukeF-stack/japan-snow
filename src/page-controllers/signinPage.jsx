@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import SignInForm from "../components/SignInForm";
 //import { User } from "../components/User.js";
-import SetUser from "../components/SetUser";
+import SignInUser from "../components/SignInUser";
 
 class SignInPage extends React.Component {
   setUser = [];
@@ -29,7 +29,7 @@ class SignInPage extends React.Component {
       } else {
         this.userData = data.user;
         this.User = this.userData;
-        this.setUser.push(<SetUser key="1" userData={this.User} />);
+        this.setUser.push(<SignInUser key="1" userData={this.User} />);
         this.setState(this.userData);
         localStorage.setItem("token", data.token);
       }

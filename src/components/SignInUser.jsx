@@ -11,6 +11,7 @@ function SignInUser(props) {
   useEffect(() => {
     setUser(userData);
     history.push("/");
+    console.log(`Welcome ${userData.fullName}`);
   }, [setUser, userData, history]);
   return null;
 }

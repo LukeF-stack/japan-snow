@@ -41,8 +41,8 @@ function App() {
                 email: res.user.email,
                 authenticated: true
               };
-              if (res.user.favs) {
-                userData["favs"] = res.user.favs;
+              if (res.user.favs_destinations) {
+                userData["favs_destinations"] = res.user.favs_destinations;
               }
               setUser(userData);
             });

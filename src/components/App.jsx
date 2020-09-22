@@ -35,12 +35,15 @@ function App() {
             console.log("token not valid");
           } else {
             res.json().then((res) => {
-              console.log("User authorised");
+              console.log("User Authenticated");
               const userData = {
                 fullName: res.user.fullName,
                 email: res.user.email,
                 authenticated: true
               };
+              if (res.user.favs) {
+                userData["favs"] = res.user.favs;
+              }
               setUser(userData);
             });
           }

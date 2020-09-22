@@ -27,6 +27,7 @@ class SignInPage extends React.Component {
       if (!data) {
         console.log("problem signing in");
       } else {
+        //console.log(data.user);
         this.userData = data.user;
         this.User = this.userData;
         this.setUser.push(<SignInUser key="1" userData={this.User} />);

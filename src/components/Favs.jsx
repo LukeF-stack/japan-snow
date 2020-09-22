@@ -6,7 +6,7 @@ function Favs() {
   const { user } = useContext(UserContext);
   return (
     <div>
-      <h3>{user.fullName}</h3>
+      <h3>{user.favs}</h3>
     </div>
   );
 }

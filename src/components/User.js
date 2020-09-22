@@ -2,7 +2,8 @@ const User = {
   props: {
     fullName: "",
     email: "",
-    authenticated: false
+    authenticated: false,
+    favs_destinations: null
   }
 };
 

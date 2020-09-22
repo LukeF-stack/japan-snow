@@ -45,7 +45,8 @@ ul {
 }
 
 .homePage-hero {
-  background-color: dimgray;
+  background-image: url("/src/images/hero-image.jpg");
+  background-size: cover;
   height: 100vh;
   width: 100%;
   display: grid;

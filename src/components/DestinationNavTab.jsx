@@ -27,6 +27,7 @@ class DestinationNavTabs extends React.Component {
           <Link to={this.flightsLink}>
             <li>Flights</li>
           </Link>
+          <button className="fav-btn"></button>
         </ul>
       </div>
     );

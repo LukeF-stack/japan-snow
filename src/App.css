@@ -117,3 +117,10 @@ ul {
   box-shadow: 3px 4px 5px -1px rgba(0, 0, 0, 0.28);
   border-radius: 5px;
 }
+
+.fav-btn {
+  background-color: red;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+}

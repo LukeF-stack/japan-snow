@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import "./bonsai-base.min.css";
+import "./index.css";
+import "./App.css";
 
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";

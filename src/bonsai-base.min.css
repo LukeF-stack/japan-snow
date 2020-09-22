@@ -218,7 +218,7 @@ input[type="radio"]:checked {
 input[type="checkbox"]:checked:before {
   display: flex;
   justify-content: center;
-  content: "✔";
+  content: "â";
   color: #fff;
   font-size: 0.8rem;
 }

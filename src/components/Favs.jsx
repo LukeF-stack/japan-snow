@@ -17,7 +17,8 @@ function Favs() {
   }, [user]);
 
   const getFavDestinations = async () => {
-    if (user.favs_destinations) {
+    if (user.favs_destinations && user.favs_destinations.length > 0) {
+      console.log("getting favs");
       try {
         const url = new URL(
           "https://5sx1m.sse.codesandbox.io/api/destinations"

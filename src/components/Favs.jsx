@@ -13,6 +13,7 @@ function Favs() {
   useEffect(() => {
     getFavDestinations();
     //console.log(user.favs_destinations);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const getFavDestinations = async () => {

@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import FavBtn from "./FavBtn";
 
 class DestinationNavTabs extends React.Component {
   infoLink = `/destinations/${this.props.match.params.id}/info`;
@@ -27,7 +28,7 @@ class DestinationNavTabs extends React.Component {
           <Link to={this.flightsLink}>
             <li>Flights</li>
           </Link>
-          <button className="fav-btn"></button>
+          <FavBtn />
         </ul>
       </div>
     );

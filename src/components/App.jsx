@@ -53,7 +53,6 @@ function App() {
         });
     } else {
       console.log("No local token, please sign in");
-      window.location.hash = "#signin";
     }
   }, []);
 
@@ -71,7 +70,9 @@ function App() {
             <Route path="/resorts/:id" component={ResortPage} />
             <Route path="/signup" exact component={SignUpPage} />
             <Route path="/signin" exact component={SignInPage} />
-            <Route path="/account" exact component={AccountPage} />
+            {user.authenticated ? (
+              <Route path="/account" exact component={AccountPage} />
+            ) : null}
           </Switch>
         </UserContext.Provider>
       </div>

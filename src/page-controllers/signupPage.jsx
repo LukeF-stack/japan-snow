@@ -1,8 +1,13 @@
 import React from "react";
 import "../App.css";
 import SignUpForm from "../components/SignUpForm";
+import { withRouter } from "react-router-dom";
 
 class SignUpPage extends React.Component {
+  redirectToHome = () => {
+    const { history } = this.props;
+    if (history) history.push("/signin");
+  };
   onSignUp = async (fields) => {
     //console.log("signupPage got", fields);
 
@@ -24,6 +29,7 @@ class SignUpPage extends React.Component {
     } catch (e) {
       console.log(e.message);
     }
+    this.redirectToHome();
   };
 
   render() {
@@ -35,4 +41,4 @@ class SignUpPage extends React.Component {
   }
 }
 
-export default SignUpPage;
+export default withRouter(SignUpPage);

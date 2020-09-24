@@ -78,7 +78,7 @@ ul {
   height: 100vh;
   width: 100%;
   display: grid;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 200px 1fr;
 }
 .homePage-map ul {
   z-index: 1;

@@ -36,10 +36,17 @@ function App() {
           } else {
             res.json().then((res) => {
               console.log("User Authenticated");
-              const userData = res.user;
+              const userData = {
+                favs_destinations: res.user.favs_destinations,
+                _id: res.user._id,
+                fullName: res.user.fullName,
+                email: res.user.email,
+                authenticated: true
+              };
               if (res.user.favs_destinations) {
                 userData["favs_destinations"] = res.user.favs_destinations;
               }
+              //console.log(userData);
               setUser(userData);
             });
           }

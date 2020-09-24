@@ -5,27 +5,30 @@ import { UserContext } from "./UserContext";
 function FavBtn(props) {
   const { user } = useContext(UserContext);
   const favsBody = { favs_destinations: props.id };
-  const addToFavs = async () => {
-    const settings = {
+  const addToFavs = () => {
+    fetch(`https://5sx1m.sse.codesandbox.io/api/users/${user._id}`, {
       method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(favsBody)
-    };
-    try {
-      const url = new URL(
-        `https://5sx1m.sse.codesandbox.io/api/users/${user._id}`
-      );
-
-      console.log("id is ", user._id, "body is", favsBody);
-      //const params = { id: user.id };
-      //url.search = new URLSearchParams(params).toString();
-      const response = await fetch(url, settings);
-      console.log(JSON.parse(response));
-    } catch {}
+    })
+      .then((res) => {
+        // log the response
+        //console.log(res);
+        // if the response wasn't a success response, show problem notification
+        if (res.status !== 200) {
+          console.log("problem updating user");
+        } else {
+          // else (success) show success notification & reload page
+          console.log("user updated");
+          console.log(res);
+        }
+      })
+      // catch errors
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
+
   return (
     <div>
       {user.authenticated ? (

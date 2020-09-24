@@ -16,7 +16,7 @@ function ResortPage({ match }) {
   const generatePageContent = async () => {
     try {
       const response = await fetch(
-        `https://5sx1m.sse.codesandbox.io/api/resorts/${match.params.id}`
+        `https://dsbn3.sse.codesandbox.io/api/resorts/${match.params.id}`
       );
       const resort = await response.json();
       setResort(resort);

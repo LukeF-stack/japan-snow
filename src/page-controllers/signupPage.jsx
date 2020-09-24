@@ -16,7 +16,7 @@ class SignUpPage extends React.Component {
     };
     try {
       const response = await fetch(
-        `https://5sx1m.sse.codesandbox.io/api/users`,
+        `https://dsbn3.sse.codesandbox.io/api/users`,
         settings
       );
       const data = await response.json();

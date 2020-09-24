@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      fetch("https://5sx1m.sse.codesandbox.io/api/auth/validate", {
+      fetch("https://dsbn3.sse.codesandbox.io/api/auth/validate", {
         headers: { Authorization: `Bearer ${localStorage.token}` }
       })
         .then((res) => {

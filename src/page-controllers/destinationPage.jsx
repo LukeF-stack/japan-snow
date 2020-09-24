@@ -19,7 +19,7 @@ function DestinationPage({ match }) {
   const generatePageContent = async () => {
     try {
       const response = await fetch(
-        `https://5sx1m.sse.codesandbox.io/api/destinations/${match.params.id}`
+        `https://dsbn3.sse.codesandbox.io/api/destinations/${match.params.id}`
       );
       const destination = await response.json();
       setDestination(destination);

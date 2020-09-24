@@ -9,7 +9,7 @@ class DestinationResorts extends React.Component {
   }
   getResorts = async (props) => {
     try {
-      const url = new URL("https://5sx1m.sse.codesandbox.io/api/resorts");
+      const url = new URL("https://dsbn3.sse.codesandbox.io/api/resorts");
       const params = { destinationId: this.props.match.params.id };
       url.search = new URLSearchParams(params).toString();
       const response = await fetch(url);

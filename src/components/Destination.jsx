@@ -10,7 +10,7 @@ class DestinationParent extends React.Component {
   getInfo = async (value) => {
     try {
       const response = await fetch(
-        "https://5sx1m.sse.codesandbox.io/api/destinations/" + value
+        "https://dsbn3.sse.codesandbox.io/api/destinations/" + value
       );
       const data = await response.json();
       this.setState({

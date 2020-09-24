@@ -21,7 +21,7 @@ function Favs() {
       console.log("getting favs");
       try {
         const url = new URL(
-          "https://5sx1m.sse.codesandbox.io/api/destinations"
+          "https://dsbn3.sse.codesandbox.io/api/destinations"
         );
         const favsIds = await user.favs_destinations;
         const params = await { ids: favsIds };

@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+section {
+  height: 100vh;
+  min-height: 40vw;
+}
+
+.map-title {
+  margin: 80px 0 40px;
+}
+.destination-bio {
+  margin: auto;
+}
+
 nav {
   position: fixed;
   width: 100%;
@@ -45,7 +57,7 @@ ul {
 }
 
 .homePage-hero {
-  background-image: url("/src/images/hero-image.jpg");
+  background-color: rgb(241, 241, 241);
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -56,8 +68,10 @@ ul {
 .homePage-hero-title {
   margin: 0;
   color: black;
-  top: 20vh;
+  margin-top: 15vh;
   grid-row: 2;
+  font-size: 12vw;
+  text-align: center;
 }
 
 .homePage-map {
@@ -123,4 +137,5 @@ ul {
   padding: 0;
   width: 15px;
   height: 15px;
+  visibility: hidden;
 }

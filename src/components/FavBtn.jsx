@@ -16,10 +16,10 @@ function FavBtn(props) {
     };
     try {
       const url = new URL(
-        `https://5sx1m.sse.codesandbox.io/api/users/${user.id}`
+        `https://5sx1m.sse.codesandbox.io/api/users/${user._id}`
       );
       //const userId = user.id;
-      console.log("id is ", user.id, "body is", favsBody);
+      console.log("id is ", user._id, "body is", favsBody);
       //const params = { id: user.id };
       //url.search = new URLSearchParams(params).toString();
       const response = await fetch(url, settings);

@@ -36,12 +36,7 @@ function App() {
           } else {
             res.json().then((res) => {
               console.log("User Authenticated");
-              const userData = {
-                id: res.user._id,
-                fullName: res.user.fullName,
-                email: res.user.email,
-                authenticated: true
-              };
+              const userData = res.user;
               if (res.user.favs_destinations) {
                 userData["favs_destinations"] = res.user.favs_destinations;
               }

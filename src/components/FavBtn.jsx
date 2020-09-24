@@ -2,11 +2,35 @@ import React, { useContext } from "react";
 import "../App.css";
 import { UserContext } from "./UserContext";
 
-function FavBtn() {
+function FavBtn(props) {
   const { user } = useContext(UserContext);
+  const favsBody = { favs_destinations: props.id };
+  const addToFavs = async () => {
+    const settings = {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(favsBody)
+    };
+    try {
+      const url = new URL(
+        `https://5sx1m.sse.codesandbox.io/api/users/${props.id}`
+      );
+      //const userId = user.id;
+      console.log("id is ", user.id, "body is", favsBody);
+      const params = { id: user.id };
+      url.search = new URLSearchParams(params).toString();
+      const response = await fetch(url, settings);
+      console.log(response);
+    } catch {}
+  };
   return (
     <div>
-      {user.authenticated ? <button className="fav-btn"></button> : null}
+      {user.authenticated ? (
+        <button className="fav-btn" onClick={addToFavs}></button>
+      ) : null}
     </div>
   );
 }

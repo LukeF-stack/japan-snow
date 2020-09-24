@@ -28,7 +28,7 @@ class DestinationNavTabs extends React.Component {
           <Link to={this.flightsLink}>
             <li>Flights</li>
           </Link>
-          <FavBtn />
+          <FavBtn id={this.props.match.params.id} />
         </ul>
       </div>
     );

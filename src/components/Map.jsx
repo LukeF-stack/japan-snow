@@ -6,7 +6,7 @@ import DestinationParent from "./Destination.jsx";
 class Map extends React.Component {
   render() {
     return (
-      <div>
+      <div className="map">
         <section className="homePage-map">
           <ul>
             <li>

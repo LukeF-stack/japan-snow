@@ -6,9 +6,12 @@ import Map from "../components/Map.jsx";
 function HomePage() {
   return (
     <div className="home">
-      <HomePageHero />
-      <h1>MAP</h1>
-      <Map />
+      <section>
+        <HomePageHero />
+      </section>
+      <section>
+        <Map />
+      </section>
     </div>
   );
 }

@@ -23,7 +23,7 @@ function DestinationPage({ match }) {
       );
       const destination = await response.json();
       setDestination(destination);
-      //console.log(destination);
+      //console.log(destination.photos);
     } catch (e) {
       console.log(e);
     }
@@ -43,7 +43,7 @@ function DestinationPage({ match }) {
           <DestinationResorts match={match} />
         </Route>
         <Route exact path="/destinations/:id/photos">
-          <DestinationPhotos />
+          <DestinationPhotos photos={destination.photos} />
         </Route>
         <Route exact path="/destinations/:id/reviews">
           <DestinationReviews />

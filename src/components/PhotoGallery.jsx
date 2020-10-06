@@ -3,7 +3,7 @@ import "../App.css";
 
 function PhotoGallery(props) {
   useEffect(() => {
-    console.log(props.id);
+    console.log(props.photos);
   }, [props]);
 
   return <div></div>;

@@ -43,10 +43,10 @@ function PhotoGallery(props) {
 
   return (
     <div>
-      <div className="gallery-modal">
-        <img src={activePhoto} alt={activePhoto} />
-      </div>
       <div className="grid-container">
+        <div className="gallery-modal">
+          <img src={activePhoto} alt={activePhoto} className="displayed-img" />
+        </div>
         <ul className="photo-grid">{gallery}</ul>
       </div>
     </div>

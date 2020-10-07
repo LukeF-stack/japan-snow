@@ -8,6 +8,8 @@ function PhotoGallery(props) {
     getPhotos(props);
   }, [props]);
 
+  const selectImage = (photo) => {};
+
   const getPhotos = async (props) => {
     //console.log("id is", props.id);
     try {
@@ -20,7 +22,7 @@ function PhotoGallery(props) {
       const images = [];
       destination.photos.forEach((photo) => {
         images.push(
-          <li key={photo}>
+          <li key={photo} onClick={selectImage(photo)}>
             <div
               className="photo-result"
               style={{ backgroundImage: `url(${photo})` }}
@@ -35,8 +37,10 @@ function PhotoGallery(props) {
   };
 
   return (
-    <div className="grid-container">
-      <ul className="photo-grid">{gallery}</ul>
+    <div>
+      <div className="grid-container">
+        <ul className="photo-grid">{gallery}</ul>
+      </div>
     </div>
   );
 }

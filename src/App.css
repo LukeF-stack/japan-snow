@@ -11,6 +11,7 @@ section {
 
 .grid-container {
   margin: auto;
+  margin-top: 10vh;
   max-width: 80vw;
 }
 

@@ -3,12 +3,16 @@ import "../App.css";
 
 function PhotoGallery(props) {
   const [gallery, setGallery] = useState([]);
+  const [activePhoto, setActivePhoto] = useState({});
   //const [destination, setDestination] = useState({});
   useEffect(() => {
     getPhotos(props);
   }, [props]);
 
-  const selectImage = (photo) => {};
+  /*  const selectImage = (photo) => {
+    setActivePhoto(photo);
+    console.log(photo);
+  }; */
 
   const getPhotos = async (props) => {
     //console.log("id is", props.id);
@@ -22,7 +26,7 @@ function PhotoGallery(props) {
       const images = [];
       destination.photos.forEach((photo) => {
         images.push(
-          <li key={photo} onClick={selectImage(photo)}>
+          <li key={photo} onClick={() => setActivePhoto(photo)}>
             <div
               className="photo-result"
               style={{ backgroundImage: `url(${photo})` }}
@@ -38,6 +42,9 @@ function PhotoGallery(props) {
 
   return (
     <div>
+      <div className="gallery-modal">
+        <img src={activePhoto} alt={activePhoto} />
+      </div>
       <div className="grid-container">
         <ul className="photo-grid">{gallery}</ul>
       </div>

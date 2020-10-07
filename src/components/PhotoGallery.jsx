@@ -35,6 +35,7 @@ function PhotoGallery(props) {
         );
       });
       setGallery(images);
+      setActivePhoto(images[0].key);
     } catch (e) {
       console.log(e.message);
     }

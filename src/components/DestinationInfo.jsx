@@ -6,7 +6,7 @@ function DestinationInfo(props) {
 
   useEffect(() => {
     getWeatherInfo();
-  });
+  }, []);
 
   const getWeatherInfo = async () => {
     try {

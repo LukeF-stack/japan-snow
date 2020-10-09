@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 
 function DestinationInfo(props) {
   const { description, island } = props;
+
+  const [weather, setWeather] = useState({});
 
   useEffect(() => {
     getWeatherInfo();
@@ -24,7 +26,17 @@ function DestinationInfo(props) {
       url.search = new URLSearchParams(params).toString();
       const response = await fetch(url, settings);
       const currentWeather = await response.json();
+      const savedWeather = {};
       console.log(currentWeather);
+      currentWeather.weather.forEach((result) => {
+        savedWeather["id"] = result.id;
+        savedWeather["main"] = result.main;
+        savedWeather["description"] = result.description;
+        savedWeather["icon"] = result.icon;
+        console.log(savedWeather);
+      });
+      savedWeather["temp"] = currentWeather.main.temp;
+      setWeather(savedWeather);
     } catch (e) {
       console.log(e.message);
     }
@@ -35,6 +47,7 @@ function DestinationInfo(props) {
       <h6>
         <strong>{island}</strong>
       </h6>
+      <pre>{JSON.stringify(weather)}</pre>
     </div>
   );
 }

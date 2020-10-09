@@ -27,15 +27,15 @@ function DestinationInfo(props) {
       const response = await fetch(url, settings);
       const currentWeather = await response.json();
       const savedWeather = {};
-      console.log(currentWeather);
+      //ßconsole.log(currentWeather);
       currentWeather.weather.forEach((result) => {
         savedWeather["id"] = result.id;
         savedWeather["main"] = result.main;
         savedWeather["description"] = result.description;
         savedWeather["icon"] = result.icon;
-        console.log(savedWeather);
+        //console.log(savedWeather);
       });
-      savedWeather["temp"] = currentWeather.main.temp;
+      savedWeather["temp"] = currentWeather.main.temp - 273.15;
       setWeather(savedWeather);
     } catch (e) {
       console.log(e.message);

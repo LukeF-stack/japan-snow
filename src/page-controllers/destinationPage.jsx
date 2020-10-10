@@ -23,7 +23,7 @@ function DestinationPage({ match }) {
       );
       const destination = await response.json();
       setDestination(destination);
-      //console.log(destination.photos);
+      console.log("set destination is", destination.open_weather_location_id);
     } catch (e) {
       console.log(e);
     }
@@ -37,6 +37,7 @@ function DestinationPage({ match }) {
           <DestinationInfo
             description={destination.description}
             island={destination.island}
+            open_weather_id={destination.open_weather_location_id}
           />
         </Route>
         <Route exact path="/destinations/:id/resorts">

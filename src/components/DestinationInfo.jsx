@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../App.css";
 
 function DestinationInfo(props) {
-  const { description, island } = props;
+  const { description, island, open_weather_id } = props;
 
   const [weather, setWeather] = useState({});
 
   useEffect(() => {
+    //console.log(open_weather_id);
     getWeatherInfo();
   }, []);
 
@@ -22,12 +23,14 @@ function DestinationInfo(props) {
       const url = new URL(
         "https://community-open-weather-map.p.rapidapi.com/weather"
       );
-      const params = { q: "nagano,jp" };
+      const query = await open_weather_id;
+      //console.log(query);
+      const params = { q: await open_weather_id };
       url.search = new URLSearchParams(params).toString();
       const response = await fetch(url, settings);
       const currentWeather = await response.json();
       const savedWeather = {};
-      //ßconsole.log(currentWeather);
+      //console.log(currentWeather);
       currentWeather.weather.forEach((result) => {
         savedWeather["id"] = result.id;
         savedWeather["main"] = result.main;
@@ -35,19 +38,28 @@ function DestinationInfo(props) {
         savedWeather["icon"] = result.icon;
         //console.log(savedWeather);
       });
-      savedWeather["temp"] = currentWeather.main.temp - 273.15;
+      const celcius = currentWeather.main.temp - 273.15;
+      const roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
+      savedWeather["temp"] = roundedTemp;
       setWeather(savedWeather);
     } catch (e) {
       console.log(e.message);
     }
   };
+  //console.log(weather);
   return (
     <div className="destination-info">
       <p>{description}</p>
       <h6>
         <strong>{island}</strong>
       </h6>
-      <pre>{JSON.stringify(weather)}</pre>
+      <div className="weather">
+        <h3>
+          <strong>{weather.main}</strong>
+        </h3>
+        <h5>{weather.description}</h5>
+        <h1>{weather.temp}&deg;C</h1>
+      </div>
     </div>
   );
 }

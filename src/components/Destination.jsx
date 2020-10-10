@@ -18,13 +18,13 @@ class DestinationParent extends React.Component {
         destinationDescription: data.description,
         destinationId: data._id,
         buttonTitle: "View " + data.title,
-        island: data.island
+        island: data.island,
+        open_weather_id: data.open_weather_location_id
       });
+      //console.log(this.island);
     } catch (e) {
       console.log(e);
     }
-
-    //console.log(data.title);
   };
   render() {
     return (
@@ -41,6 +41,7 @@ class DestinationParent extends React.Component {
           destination="Hakuba Valley"
           destinationId="5f4f0c4d6dc6a63a00dfd95a"
           displayInfo={this.getInfo}
+          open_weather_id={this.state.open_weather_id}
         />
         <DestinationChild
           destination="Niseko"

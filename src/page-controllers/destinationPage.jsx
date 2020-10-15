@@ -53,17 +53,21 @@ function DestinationPage({ match }) {
       const currentWeather = await response.json();
       //console.log(currentWeather);
       const savedWeather = {};
-      //console.log(currentWeather);
-      currentWeather.weather.forEach((result) => {
-        savedWeather["id"] = result.id;
-        savedWeather["main"] = result.main;
-        savedWeather["description"] = result.description;
-        savedWeather["icon"] = result.icon;
-        //console.log(savedWeather);
-      });
-      const celcius = currentWeather.main.temp - 273.15;
-      const roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
-      savedWeather["temp"] = roundedTemp;
+      //console.log("current weather is", currentWeather);
+      if (currentWeather.weather) {
+        currentWeather.weather.forEach((result) => {
+          savedWeather["id"] = result.id;
+          savedWeather["main"] = result.main;
+          savedWeather["description"] = result.description;
+          savedWeather["icon"] = result.icon;
+          //console.log(savedWeather);
+        });
+      }
+      if (currentWeather.main) {
+        const celcius = currentWeather.main.temp - 273.15;
+        const roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
+        savedWeather["temp"] = roundedTemp;
+      }
       setWeather(savedWeather);
     } catch (e) {
       console.log(e.message);

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect /*useState*/ } from "react";
 import "../App.css";
 
 function DestinationInfo(props) {
-  const { description, island, open_weather_id } = props;
+  const { description, island, currentWeather } = props;
 
-  const [weather, setWeather] = useState({});
+  //const [weather, setWeather] = useState({});
 
   useEffect(() => {
     //console.log(open_weather_id);
-    getWeatherInfo();
+    //getWeatherInfo();
   }, []);
 
-  const getWeatherInfo = async () => {
+  /*const getWeatherInfo = async () => {
     try {
       const settings = {
         method: "GET",
@@ -25,7 +25,7 @@ function DestinationInfo(props) {
       );
       const query = await open_weather_id;
       //console.log(query);
-      const params = { q: await open_weather_id };
+      const params = { q: query };
       url.search = new URLSearchParams(params).toString();
       const response = await fetch(url, settings);
       const currentWeather = await response.json();
@@ -46,7 +46,7 @@ function DestinationInfo(props) {
       console.log(e.message);
     }
   };
-  //console.log(weather);
+  //console.log(weather);*/
   return (
     <div className="destination-info">
       <p>{description}</p>
@@ -55,10 +55,10 @@ function DestinationInfo(props) {
       </h6>
       <div className="weather">
         <h3>
-          <strong>{weather.main}</strong>
+          <strong>{currentWeather.main}</strong>
         </h3>
-        <h5>{weather.description}</h5>
-        <h1>{weather.temp}&deg;C</h1>
+        <h5>{currentWeather.description}</h5>
+        <h1>{currentWeather.temp}&deg;C</h1>
       </div>
     </div>
   );

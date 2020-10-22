@@ -10,7 +10,7 @@ import DestinationFlights from "../components/DestinationFlights";
 
 function DestinationPage({ match }) {
   const [weather, setWeather] = useState({});
-  const [theDestination, setDestination] = useState({});
+  const [theDestination, setDestination] = useState(null);
 
   useEffect(() => {
     generatePageContent();
@@ -18,7 +18,10 @@ function DestinationPage({ match }) {
   }, []);
 
   useEffect(() => {
-    getWeatherInfo();
+    //getWeatherInfo();
+    if (theDestination !== null) {
+      getWeatherInfo();
+    }
   }, [theDestination]);
 
   const generatePageContent = async () => {
@@ -53,7 +56,7 @@ function DestinationPage({ match }) {
       const currentWeather = await response.json();
       //console.log(currentWeather);
       const savedWeather = {};
-      //console.log("current weather is", currentWeather);
+      console.log("current weather is", currentWeather);
       if (currentWeather.weather) {
         currentWeather.weather.forEach((result) => {
           savedWeather["id"] = result.id;
@@ -75,16 +78,20 @@ function DestinationPage({ match }) {
   };
   return (
     <div>
-      <h1 className="page-title">{theDestination.title}</h1>
+      {theDestination !== null ? (
+        <h1 className="page-title">{theDestination.title}</h1>
+      ) : null}
       <DestinationNavTabs match={match} />
       <Switch>
         <Route path="/destinations/:id/info">
-          <DestinationInfo
-            description={theDestination.description}
-            island={theDestination.island}
-            //open_weather_id={destination.open_weather_location_id}
-            currentWeather={weather}
-          />
+          {theDestination !== null ? (
+            <DestinationInfo
+              description={theDestination.description}
+              island={theDestination.island}
+              //open_weather_id={destination.open_weather_location_id}
+              currentWeather={weather}
+            />
+          ) : null}
         </Route>
         <Route exact path="/destinations/:id/resorts">
           <DestinationResorts match={match} />

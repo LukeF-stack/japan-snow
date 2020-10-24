@@ -89,7 +89,7 @@ function DestinationPage({ match }) {
         if (currentWeather.list) {
           console.log("list exists", currentWeather.list);
           currentWeather.list.forEach((day) => {
-            console.log(day);
+            //console.log(day);
             const forecast = {};
             forecast["temp_min"] = day.temp.min;
             forecast["temp_max"] = day.temp.max;
@@ -113,8 +113,8 @@ function DestinationPage({ match }) {
                 </h4>
               </li>
             );
-            setForecast(savedForecast);
           });
+          setForecast(savedForecast);
           console.log("saved forecast is", savedForecast);
         }
       }

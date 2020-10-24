@@ -18,9 +18,13 @@ function DestinationPage({ match }) {
   }, []);
 
   useEffect(() => {
-    //getWeatherInfo();
     if (theDestination !== null) {
-      getWeatherInfo();
+      getWeatherInfo(
+        "https://community-open-weather-map.p.rapidapi.com/weather"
+      );
+      getWeatherInfo(
+        "https://community-open-weather-map.p.rapidapi.com/forecast/daily"
+      );
     }
   }, [theDestination]);
 
@@ -36,7 +40,7 @@ function DestinationPage({ match }) {
       console.log(e);
     }
   };
-  const getWeatherInfo = async () => {
+  const getWeatherInfo = async (endpoint) => {
     try {
       const settings = {
         method: "GET",
@@ -45,33 +49,64 @@ function DestinationPage({ match }) {
           "x-rapidapi-key": "23486abf9amsh0e62ec82af84999p138781jsn74da7f1f870a"
         }
       };
-      const url = new URL(
-        "https://community-open-weather-map.p.rapidapi.com/weather"
-      );
+      const url = new URL(endpoint);
       //const query = destination.open_weather_location_id;
       //console.log("destination is", theDestination);
       const params = { q: theDestination.open_weather_location_id };
       url.search = new URLSearchParams(params).toString();
       const response = await fetch(url, settings);
       const currentWeather = await response.json();
-      //console.log(currentWeather);
-      const savedWeather = {};
-      console.log("current weather is", currentWeather);
-      if (currentWeather.weather) {
-        currentWeather.weather.forEach((result) => {
-          savedWeather["id"] = result.id;
-          savedWeather["main"] = result.main;
-          savedWeather["description"] = result.description;
-          savedWeather["icon"] = result.icon;
-          //console.log(savedWeather);
-        });
+
+      if (
+        endpoint === "https://community-open-weather-map.p.rapidapi.com/weather"
+      ) {
+        //console.log(currentWeather);
+        const savedWeather = {};
+        console.log("current weather is", currentWeather);
+        if (currentWeather.weather) {
+          currentWeather.weather.forEach((result) => {
+            savedWeather["id"] = result.id;
+            savedWeather["main"] = result.main;
+            savedWeather["description"] = result.description;
+            savedWeather["icon"] = result.icon;
+            //console.log(savedWeather);
+          });
+        }
+        if (currentWeather.main) {
+          const celcius = currentWeather.main.temp - 273.15;
+          const roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
+          savedWeather["temp"] = roundedTemp;
+        }
+        setWeather(savedWeather);
+      } else if (
+        endpoint ===
+        "https://community-open-weather-map.p.rapidapi.com/forecast/daily"
+      ) {
+        console.log("forecast is", currentWeather);
+        const savedForecast = [];
+        let forecastIndex = 0;
+        if (currentWeather.list) {
+          console.log("list exists", currentWeather.list);
+          currentWeather.list.forEach((day) => {
+            console.log(day);
+            const forecast = {};
+            forecast["temp_min"] = day.temp.min;
+            forecast["temp_max"] = day.temp.max;
+            forecast["index"] = forecastIndex;
+            forecastIndex += 1;
+            // savedForecast["temp_min"] = day.temp.min;
+            // savedForecast["temp_max"] = day.temp.max;
+            day.weather.forEach((result) => {
+              forecast["id"] = result.id;
+              forecast["main"] = result.main;
+              forecast["description"] = result.description;
+              forecast["icon"] = result.icon;
+            });
+            savedForecast.push(forecast);
+          });
+          console.log("saved forecast is", savedForecast);
+        }
       }
-      if (currentWeather.main) {
-        const celcius = currentWeather.main.temp - 273.15;
-        const roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
-        savedWeather["temp"] = roundedTemp;
-      }
-      setWeather(savedWeather);
     } catch (e) {
       console.log(e.message);
     }

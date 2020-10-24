@@ -6,13 +6,9 @@ function PhotoGallery(props) {
   const [activePhoto, setActivePhoto] = useState({});
   //const [destination, setDestination] = useState({});
   useEffect(() => {
+    console.log(props);
     getPhotos(props);
   }, [props]);
-
-  /*  const selectImage = (photo) => {
-    setActivePhoto(photo);
-    console.log(photo);
-  }; */
 
   const getPhotos = async (props) => {
     //console.log("id is", props.id);

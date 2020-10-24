@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 
 function DestinationInfo(props) {
-  const { description, island, currentWeather } = props;
+  const { description, island, currentWeather, forecast } = props;
 
   return (
     <div className="destination-info">
@@ -16,6 +16,9 @@ function DestinationInfo(props) {
         </h3>
         <h5>{currentWeather.description}</h5>
         <h1>{currentWeather.temp}&deg;C</h1>
+      </div>
+      <div>
+        <ul>{forecast}</ul>
       </div>
     </div>
   );

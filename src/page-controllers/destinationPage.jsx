@@ -10,6 +10,7 @@ import DestinationFlights from "../components/DestinationFlights";
 
 function DestinationPage({ match }) {
   const [weather, setWeather] = useState({});
+  const [forecast, setForecast] = useState([]);
   const [theDestination, setDestination] = useState(null);
 
   useEffect(() => {
@@ -102,7 +103,17 @@ function DestinationPage({ match }) {
               forecast["description"] = result.description;
               forecast["icon"] = result.icon;
             });
-            savedForecast.push(forecast);
+            savedForecast.push(
+              <li key={forecast.index} className="resort-result">
+                <h3>{forecast.index}</h3>
+                <h4>{forecast.main}</h4>
+                <p>{forecast.description}</p>
+                <h4>
+                  {forecast.temp_min} - {forecast.temp_max}
+                </h4>
+              </li>
+            );
+            setForecast(savedForecast);
           });
           console.log("saved forecast is", savedForecast);
         }
@@ -125,6 +136,7 @@ function DestinationPage({ match }) {
               island={theDestination.island}
               //open_weather_id={destination.open_weather_location_id}
               currentWeather={weather}
+              forecast={forecast}
             />
           ) : null}
         </Route>

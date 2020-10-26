@@ -42,6 +42,11 @@ function DestinationPage({ match }) {
     }
   };
   const getWeatherInfo = async (endpoint) => {
+    function convertTemp(value) {
+      let celcius = value - 273.15;
+      let roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
+      return roundedTemp;
+    }
     try {
       const settings = {
         method: "GET",
@@ -74,9 +79,7 @@ function DestinationPage({ match }) {
           });
         }
         if (currentWeather.main) {
-          const celcius = currentWeather.main.temp - 273.15;
-          const roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
-          savedWeather["temp"] = roundedTemp;
+          savedWeather["temp"] = convertTemp(currentWeather.main.temp);
         }
         setWeather(savedWeather);
       } else if (
@@ -92,12 +95,6 @@ function DestinationPage({ match }) {
             //console.log(day);
             let dtDate = new Date();
             dtDate.setTime(day.dt * 1000);
-
-            function convertTemp(value) {
-              let celcius = value - 273.15;
-              let roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
-              return roundedTemp;
-            }
 
             const forecast = {};
             forecast["date"] = dtDate.toDateString();

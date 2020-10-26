@@ -15,10 +15,10 @@ function DestinationInfo(props) {
           <strong>{currentWeather.main}</strong>
         </h3>
         <h5>{currentWeather.description}</h5>
-        <h1>{currentWeather.temp}&deg;C</h1>
+        <h1>{currentWeather.temp}°C</h1>
       </div>
       <div>
-        <ul>{forecast}</ul>
+        <ul className="forecast-list">{forecast}</ul>
       </div>
     </div>
   );

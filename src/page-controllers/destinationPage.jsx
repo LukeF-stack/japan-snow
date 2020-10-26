@@ -63,7 +63,7 @@ function DestinationPage({ match }) {
       ) {
         //console.log(currentWeather);
         const savedWeather = {};
-        console.log("current weather is", currentWeather);
+        //console.log("current weather is", currentWeather);
         if (currentWeather.weather) {
           currentWeather.weather.forEach((result) => {
             savedWeather["id"] = result.id;
@@ -83,16 +83,26 @@ function DestinationPage({ match }) {
         endpoint ===
         "https://community-open-weather-map.p.rapidapi.com/forecast/daily"
       ) {
-        console.log("forecast is", currentWeather);
+        //console.log("forecast is", currentWeather);
         const savedForecast = [];
         let forecastIndex = 0;
         if (currentWeather.list) {
-          console.log("list exists", currentWeather.list);
+          //console.log("list exists", currentWeather.list);
           currentWeather.list.forEach((day) => {
             //console.log(day);
+            let dtDate = new Date();
+            dtDate.setTime(day.dt * 1000);
+
+            function convertTemp(value) {
+              let celcius = value - 273.15;
+              let roundedTemp = (Math.round(celcius * 100) / 100).toFixed(1);
+              return roundedTemp;
+            }
+
             const forecast = {};
-            forecast["temp_min"] = day.temp.min;
-            forecast["temp_max"] = day.temp.max;
+            forecast["date"] = dtDate.toDateString();
+            forecast["temp_min"] = convertTemp(day.temp.min);
+            forecast["temp_max"] = convertTemp(day.temp.max);
             forecast["index"] = forecastIndex;
             forecastIndex += 1;
             // savedForecast["temp_min"] = day.temp.min;
@@ -104,18 +114,18 @@ function DestinationPage({ match }) {
               forecast["icon"] = result.icon;
             });
             savedForecast.push(
-              <li key={forecast.index} className="resort-result">
-                <h3>{forecast.index}</h3>
-                <h4>{forecast.main}</h4>
+              <li key={forecast.index}>
+                <p>{forecast.date}</p>
+                <h6>{forecast.main}</h6>
                 <p>{forecast.description}</p>
-                <h4>
-                  {forecast.temp_min} - {forecast.temp_max}
-                </h4>
+                <h6>
+                  {forecast.temp_min} - {forecast.temp_max}°C
+                </h6>
               </li>
             );
           });
           setForecast(savedForecast);
-          console.log("saved forecast is", savedForecast);
+          //console.log("saved forecast is", savedForecast);
         }
       }
     } catch (e) {

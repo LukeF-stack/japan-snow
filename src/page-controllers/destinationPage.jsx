@@ -113,9 +113,17 @@ function DestinationPage({ match }) {
               forecast["description"] = result.description;
               forecast["icon"] = result.icon;
             });
+            const imageUrl = `http://openweathermap.org/img/wn/${forecast.icon}@2x.png`;
             savedForecast.push(
               <li key={forecast.index}>
-                <p>{forecast.date}</p>
+                <p>
+                  <strong>{forecast.date}</strong>
+                </p>
+                <img
+                  src={imageUrl}
+                  alt={forecast.main}
+                  className="weather-icon"
+                />
                 <h6>{forecast.main}</h6>
                 <p>{forecast.description}</p>
                 <h6>
